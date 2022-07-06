@@ -16,6 +16,7 @@ const BlogPostPreview: React.FC<ArticleType> = (props: ArticleType) => {
         <Link href={`/blog/${props._id}`}>
           <a className={styles.blogPostTitle}>{props.title}</a>
         </Link>
+        <p>{props.published ? "Published" : "Unpublished"}</p>
         <p>
           {props.author.first_name} {props.author.last_name}
         </p>

@@ -14,6 +14,7 @@ import ArticleType from "../../types/ArticleType";
 
 //Style imports
 import styles from "../../styles/Blog.module.css";
+import buttonStyle from "../../styles/Button.module.css";
 
 const Article: NextPage<ArticleType> = (props: ArticleType) => {
   const router = useRouter();
@@ -28,11 +29,21 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
   return (
     <>
       <Head>
-        <title>Tom Fielder: Blog</title>
+        <title>Tom Fielder: {props.title}</title>
         <meta name="description" content="Full Stack Web Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BlogPost title={props.title} author={props.author} text={props.text} />
+      <section>
+        <BlogPost
+          title={props.title}
+          author={props.author}
+          text={props.text}
+          published={props.published}
+        />
+        <button className={buttonStyle.button}>
+          {props.published ? "Unpublish" : "Publish"}
+        </button>
+      </section>
     </>
   );
 };
@@ -47,6 +58,7 @@ export async function getStaticProps({ params }: Params) {
       title: article.title,
       author: article.author,
       text: article.text,
+      published: article.published,
     },
   };
 }

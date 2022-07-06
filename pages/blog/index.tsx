@@ -13,6 +13,7 @@ import type { NextPage } from "next";
 
 //Style imports
 import styles from "../../styles/Blog.module.css";
+import buttonStyle from "../../styles/Button.module.css";
 import { useEffect } from "react";
 
 const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
@@ -47,7 +48,7 @@ const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
             ))}
           </main>
           <Link href="/blog/new">
-            <a>New Post</a>
+            <a className={buttonStyle.button}>New Post</a>
           </Link>
         </article>
       </section>

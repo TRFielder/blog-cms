@@ -13,6 +13,7 @@ const BlogPost: React.FC<ArticleType> = (props: ArticleType) => {
     <section>
       <article className={styles.blogContainer}>
         <h1 className={styles.blogPostTitle}>{props.title}</h1>
+        <h1>{props.published ? "Published" : "Unpublished"}</h1>
         <p>
           Author: {props.author.first_name} {props.author.last_name}
         </p>
