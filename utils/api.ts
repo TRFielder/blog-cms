@@ -49,7 +49,7 @@ const login = async (username: string, password: string) => {
     return false;
   }
   localStorage.setItem("token", response.token);
-  localStorage.setItem("userIsAuth", true.toString());
+  localStorage.setItem("isUserAuth", true.toString());
   localStorage.setItem("ID", response.author._id);
   console.log("Logged in");
   return true;

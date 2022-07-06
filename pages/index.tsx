@@ -45,8 +45,9 @@ const LoginForm: NextPage = () => {
     if (password === "") {
       alert("Please enter password");
     }
-    login(username, password);
-    router.push("/blog");
+    login(username, password).then((result) => {
+      if (result) router.push("/blog");
+    });
   };
 
   return (

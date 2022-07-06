@@ -1,5 +1,6 @@
 // Utility imports
 import { getAllArticles, getAuthorByID } from "../../utils/api";
+import { useRouter } from "next/router";
 
 //Component imports
 import Head from "next/head";
@@ -12,8 +13,19 @@ import type { NextPage } from "next";
 
 //Style imports
 import styles from "../../styles/Blog.module.css";
+import { useEffect } from "react";
 
 const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
+  const router = useRouter();
+  useEffect(() => {
+    if (
+      !(localStorage.getItem("isUserAuth") && localStorage.getItem("token"))
+    ) {
+      router.push("/");
+    }
+  }, []);
+  //Check if user is logged in
+
   return (
     <>
       <Head>

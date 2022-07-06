@@ -1,6 +1,7 @@
 // Utility imports
 import { getAllArticles, getAuthorByID } from "../../../utils/api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 //Component imports
 import Head from "next/head";
@@ -15,6 +16,14 @@ import React from "react";
 const Form: NextPage = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    if (
+      !(localStorage.getItem("isUserAuth") && localStorage.getItem("token"))
+    ) {
+      router.push("/");
+    }
+  }, []);
 
   //Form event handlers
   const handleChangeTitle = (event: React.FormEvent<HTMLInputElement>) => {
