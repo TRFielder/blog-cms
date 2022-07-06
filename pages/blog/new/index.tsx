@@ -21,7 +21,7 @@ const Form: NextPage = () => {
     setTitle(event.currentTarget.value);
   };
 
-  const handleChangeText = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleChangeText = (event: React.FormEvent<HTMLTextAreaElement>) => {
     setText(event.currentTarget.value);
   };
 
@@ -38,7 +38,7 @@ const Form: NextPage = () => {
       </Head>
       <section>
         <article>
-          <form onSubmit={handleSubmit} action="">
+          <form onSubmit={handleSubmit} action="" id="newpost">
             <div className="formGroup">
               <label htmlFor="title">Title</label>
               <input
@@ -51,9 +51,9 @@ const Form: NextPage = () => {
             </div>
             <div className="formGroup">
               <label htmlFor="text">Article Text</label>
-              <input
-                type="text"
+              <textarea
                 name="text"
+                form="newpost"
                 value={text}
                 onChange={handleChangeText}
                 placeholder="Inspiring text"
