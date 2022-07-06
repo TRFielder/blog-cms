@@ -1,0 +1,46 @@
+.blogText {
+  font-size: 1rem;
+  font-weight: 200;
+  width: 100%;
+  margin: 0;
+}
+
+.blogPostTitle {
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .blogText {
+    font-size: 1.2rem;
+    font-weight: 200;
+    width: 80%;
+  }
+  .blogPostTitle {
+    font-size: 2rem;
+  }
+}
+
+.blogContainer {
+  background-color: rgb(78, 78, 78);
+  min-height: 60%;
+  padding: 10px;
+  margin-top: 1%;
+  border-radius: 10px;
+}
+
+.blogPreviewContainer {
+  background-color: rgb(78, 78, 78);
+  padding: 10px;
+  margin-top: 1%;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+.blogPreviewList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
