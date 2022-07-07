@@ -29,7 +29,7 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
     ) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   const handlePublish = () => {
     console.log(`Publishing article with id: ${props._id}`);
@@ -73,7 +73,7 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
 export default Article;
 
 // Static page generation using the route param [id] (article ID)
-export async function getServerSideProps({ params }: Params) {
+export async function getStaticProps({ params }: Params) {
   const article = await getArticleByID(params.id);
   return {
     props: {

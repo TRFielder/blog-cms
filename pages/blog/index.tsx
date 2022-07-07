@@ -24,7 +24,7 @@ const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
     ) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
   //Check if user is logged in
 
   return (

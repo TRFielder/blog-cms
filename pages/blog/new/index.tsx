@@ -23,7 +23,7 @@ const Form: NextPage = () => {
     ) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   //Form event handlers
   const handleChangeTitle = (event: React.FormEvent<HTMLInputElement>) => {
