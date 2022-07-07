@@ -64,4 +64,35 @@ const newArticle = async (title: string, text: string, author: string) => {
   });
 };
 
-export { getAuthorByID, getArticleByID, getAllArticles, login };
+const publishArticle = async (id: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/article/${id}/publish`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    },
+  );
+  console.log(response);
+  return response;
+};
+
+const unpublishArticle = async (id: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/article/${id}/unpublish`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    },
+  );
+  return response;
+};
+
+export {
+  getAuthorByID,
+  getArticleByID,
+  getAllArticles,
+  login,
+  newArticle,
+  publishArticle,
+  unpublishArticle,
+};

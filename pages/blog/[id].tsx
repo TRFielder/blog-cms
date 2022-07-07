@@ -1,5 +1,10 @@
 // Utility imports
-import { getAllArticles, getArticleByID } from "../../utils/api";
+import {
+  getAllArticles,
+  getArticleByID,
+  publishArticle,
+  unpublishArticle,
+} from "../../utils/api";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -26,10 +31,21 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
     }
   }, []);
 
+  const handlePublish = () => {
+    console.log(`Publishing article with id: ${props._id}`);
+    publishArticle(props._id as string).then((result) => console.log(result));
+    router.push(`/blog/${props._id}`);
+  };
+
+  const handleUnpublish = () => {
+    unpublishArticle(props._id as string);
+    router.push(`/blog/${props._id}`);
+  };
+
   return (
     <>
       <Head>
-        <title>Tom Fielder: {props.title}</title>
+        <title>{props.title}</title>
         <meta name="description" content="Full Stack Web Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -40,9 +56,15 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
           text={props.text}
           published={props.published}
         />
-        <button className={buttonStyle.button}>
-          {props.published ? "Unpublish" : "Publish"}
-        </button>
+        {props.published ? (
+          <button className={buttonStyle.button} onClick={handleUnpublish}>
+            Unpublish
+          </button>
+        ) : (
+          <button className={buttonStyle.button} onClick={handlePublish}>
+            Publish
+          </button>
+        )}
       </section>
     </>
   );
@@ -55,6 +77,7 @@ export async function getStaticProps({ params }: Params) {
   const article = await getArticleByID(params.id);
   return {
     props: {
+      _id: params.id,
       title: article.title,
       author: article.author,
       text: article.text,

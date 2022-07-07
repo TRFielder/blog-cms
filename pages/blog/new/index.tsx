@@ -1,5 +1,5 @@
 // Utility imports
-import { getAllArticles, getAuthorByID } from "../../../utils/api";
+import { newArticle } from "../../../utils/api";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -36,7 +36,9 @@ const Form: NextPage = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`${title}: ${text}`);
+    const ID = localStorage.getItem("ID");
+    newArticle(title, text, ID as string);
+    router.push("/blog");
   };
   return (
     <>
