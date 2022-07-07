@@ -34,12 +34,12 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
   const handlePublish = () => {
     console.log(`Publishing article with id: ${props._id}`);
     publishArticle(props._id as string).then((result) => console.log(result));
-    router.push(`/blog/${props._id}`);
+    router.push(`/blog`);
   };
 
   const handleUnpublish = () => {
     unpublishArticle(props._id as string);
-    router.push(`/blog/${props._id}`);
+    router.push(`/blog`);
   };
 
   return (
