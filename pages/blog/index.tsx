@@ -44,6 +44,7 @@ const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
                 author={article.author}
                 title={article.title}
                 text={article.text}
+                published={article.published}
               />
             ))}
           </main>
@@ -58,7 +59,7 @@ const Blog: NextPage<ArticleArrayType> = (props: ArticleArrayType) => {
 
 export default Blog;
 
-export async function getStaticProps({}) {
+export async function getServerSideProps({}) {
   const articles = await getAllArticles();
   return {
     props: {
