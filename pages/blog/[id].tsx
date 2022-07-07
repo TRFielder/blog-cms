@@ -73,7 +73,7 @@ const Article: NextPage<ArticleType> = (props: ArticleType) => {
 export default Article;
 
 // Static page generation using the route param [id] (article ID)
-export async function getStaticProps({ params }: Params) {
+export async function getServerSideProps({ params }: Params) {
   const article = await getArticleByID(params.id);
   return {
     props: {
